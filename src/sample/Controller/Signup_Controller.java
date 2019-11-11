@@ -46,9 +46,6 @@ public class Signup_Controller implements Initializable {
         signup_submit.setOnAction(event->{
             createStaff();
         });
-
-
-
     }
     public void createStaff(){
         DBHandler handler = new DBHandler();

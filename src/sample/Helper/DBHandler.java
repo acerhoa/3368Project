@@ -16,7 +16,6 @@ public class DBHandler extends DBConfig {
         dbConnection = DriverManager.getConnection(connectionString,dbUser,dbPass);
         return dbConnection;
     }
-
     public void addStaff(Staff staff){
         String insert = "INSERT INTO " + DBConstant.STAFF_TABLE + "(" +
                 DBConstant.STAFF_FIRSTNAME + "," +
@@ -25,7 +24,6 @@ public class DBHandler extends DBConfig {
                 DBConstant.STAFF_PASSWORD + "," +
                 DBConstant.STAFF_PHONE  + ")" +
                 "VALUES(?,?,?,?,?)";
-
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1,staff.getFirstname());
@@ -33,11 +31,11 @@ public class DBHandler extends DBConfig {
             preparedStatement.setString(3,staff.getUsername());
             preparedStatement.setString(4,staff.getPassword());
             preparedStatement.setString(5,staff.getPhone());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 }
